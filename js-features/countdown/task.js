@@ -1,15 +1,22 @@
-let timerSeconds = parseInt(prompt("Введите количество секунд для таймера:"));
+const timerElement = document.getElementById('timer');
 
-function countdown() {
 
-  timerSeconds--;
+let timerValue = parseInt(timerElement.textContent);
 
+
+function updateTimer() {
   
-  if (timerSeconds === 0) {
-    alert("Вы победили в конкурсе!");
-    clearInterval(timerInterval); 
+  timerValue--;
+  
+  
+  timerElement.textContent = timerValue;
+  
+ 
+  if (timerValue === 0) {
+    
+    alert('Вы победили в конкурсе!');
   }
 }
 
 
-let timerInterval = setInterval(countdown, 1000);
+setInterval(updateTimer, 1000);
