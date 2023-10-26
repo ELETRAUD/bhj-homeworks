@@ -38,7 +38,6 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 
 
-// Вызываем функцию при загрузке страницы, чтобы показать элементы, которые уже находятся в поле зрения
 
 handleScroll();
 
