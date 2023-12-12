@@ -27,20 +27,20 @@ class Storage {
         this.data = this._data;
     }
 
-    delete(idKey, idValue) {
-        this._data.filter((record) => record.id !== idValue)
+    delete() {
+        // удаляем ненужные аргументы
         this.data = this._data;
     }
 
-    clear(value) {
+    clear() {
         this._data = [];
         localStorage.removeItem(this.name);
     }
 }
 
 const cart = {el: document.querySelector('.cart__products'), storage: new Storage('cart')};
-const productIncBtns = document.querySelectorAll('.product__quantity-control.product__quantity-control_inc');
-const productDecBtns = document.querySelectorAll('.product__quantity-control.product__quantity-control_dec');
+const productIncBtns = document.querySelectorAll('.productquantity-control.productquantity-control_inc');
+const productDecBtns = document.querySelectorAll('.productquantity-control.productquantity-control_dec');
 const productAddBtns = document.querySelectorAll('.product__add');
 
 const getProducts = () => {
@@ -87,7 +87,10 @@ function priceChangeQuantityValue(difference = 1) {
 
 window.addEventListener('load', getProducts);
 
-document.querySelector('.cart__clear_btn').addEventListener('click', clearCart());
+const clearBtn = document.querySelector('.cart__clear_btn');
+if (clearBtn) {
+    clearBtn.addEventListener('click', clearCart());
+}
 
 productIncBtns.forEach((btn) => {
     btn.addEventListener('click', priceChangeQuantityValue(1))
