@@ -7,22 +7,23 @@ const getStorageTasks = () => {
 }
 
 const setStorageTasks = (tasks) => {
-    return localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 const addStorageTask = (task) => {
     const tasks = getStorageTasks();
     tasks.push(task);
-    return setStorageTasks(tasks);
+    setStorageTasks(tasks);
 }
 
 const removeStorageTask = (index) => {
     const tasks = getStorageTasks();
     tasks.splice(index, 1);
-    return setStorageTasks(tasks);
+    setStorageTasks(tasks);
 }
 
 const getTasks = () => {
+    taskList.innerHTML = '';
     getStorageTasks().forEach((task) => {
         taskList.innerHTML += decorateTaskText(task)
     });
@@ -56,13 +57,6 @@ const decorateTaskText = (taskText) => {
 }
 
 window.addEventListener('load', getTasks);
-
-taskInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        addTask();
-    }
-});
 
 taskAddButton.addEventListener('click', (event) => {
     event.preventDefault();
